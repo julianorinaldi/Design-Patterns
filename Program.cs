@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security;
+using DesignPatterns.CreationalPatterns.FacotyMethod;
 using DesignPatterns.CreationalPatterns.Singleton;
 
 namespace DesignPatterns
@@ -7,9 +9,18 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
+            //Singleton();
+            FactoryMethod();
+
+
+        }
+
+        static void Singleton()
+        {
             #region Singleton
 
             {
+                Console.WriteLine("###Singleton###");
                 Console.WriteLine("Iniciando objeto Singleton");
                 Universo universo = Universo.GetInstance;
                 Console.WriteLine("Adicionando uma galáxia");
@@ -34,8 +45,24 @@ namespace DesignPatterns
 
             #endregion
 
+        }
 
+        static void FactoryMethod()
+        {
+            #region FactoryMethod
+            Console.WriteLine("###FactoryMethod###");
+            Console.WriteLine("Fabricando o primeiro personagem");
+            IPersonagem personagem1 = FabricarPersonagem.CriarPersonagem(PersonagemEnum.LiuKang);
+            Console.WriteLine($"Personagem fabricado: {personagem1.Nome}");
 
+            Console.WriteLine("Fabricando o segundo personagem");
+            IPersonagem personagem2 = FabricarPersonagem.CriarPersonagem(PersonagemEnum.Scorpion);
+            Console.WriteLine($"Personagem fabricado: {personagem2.Nome}");
+
+            Console.WriteLine("Fabricando o primeiro personagem");
+            IPersonagem personagem3 = FabricarPersonagem.CriarPersonagem(PersonagemEnum.SubZero);
+            Console.WriteLine($"Personagem fabricado: {personagem3.Nome}");
+            #endregion
         }
     }
 }
