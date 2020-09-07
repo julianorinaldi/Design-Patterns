@@ -1,6 +1,6 @@
-# Singleton
+# Design Pattern - Singleton
 
-Somente pode existir uma única instância de uma mesma classe
+O Singleton é um padrão de projeto criacional que permite a você garantir que uma classe tenha apenas uma instância, enquanto provê um ponto de acesso global para essa instância.
 
 Como exemplo, usamos uma classe Universo, que fica fácil entender que apenas existe um universo (se não considerar os paralelos rsrsrs).
 Então toda ver que precisar de um Universo, chama-se o método GetInstance, pois o construtor da classe é privada e não tem como acessar externamente.
