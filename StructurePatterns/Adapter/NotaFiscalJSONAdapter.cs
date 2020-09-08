@@ -15,7 +15,7 @@ namespace DesignPatterns.StructurePatterns.Adapter
 
         public override string GerarNotaFiscal()
         {
-            return @$"xml {{ numeroNota: {NumeroNota} }}";
+            return @$"xml {{ numeroNota: {_notaFiscalXML.NumeroNota} }}";
         }
     }
 }
