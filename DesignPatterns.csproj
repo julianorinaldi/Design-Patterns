@@ -6,8 +6,4 @@
     <RootNamespace>DesignPatterns</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="CreationalPatterns\Prototype\" />
-  </ItemGroup>
-
 </Project>

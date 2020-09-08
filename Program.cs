@@ -1,6 +1,7 @@
 ﻿using DesignPatterns.CreationalPatterns.AbstractFactory;
 using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FacotyMethod;
+using DesignPatterns.CreationalPatterns.Prototype;
 using DesignPatterns.CreationalPatterns.Singleton;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,8 @@ namespace DesignPatterns
             //Singleton();
             //FactoryMethod();
             //AbstractFactory();
-            Builder();
+            //Builder();
+            Prototype();
         }
 
         private static void Singleton()
@@ -122,6 +124,46 @@ namespace DesignPatterns
             Console.WriteLine(tenis.ToString());
 
             #endregion Builder
+        }
+
+        private static void Prototype()
+        {
+            #region Prototype
+
+            Dado dadoBinario = new Dado()
+            {
+                FaceFrente = "001",
+                FaceLadoDireito = "010",
+                FaceLadoEsquerdo = "011",
+                FaceEmCima = "100",
+                FaceEmbaixo = "101",
+                FaceAtras = "110",
+            };
+
+            Console.WriteLine("Dados do objeto Dado Binário");
+            Console.WriteLine(dadoBinario.ToString());
+
+            Console.WriteLine("Clonando Dado Binário");
+            var dadoDecimal = dadoBinario.Clone() as Dado;
+
+            Console.WriteLine("Alterando dados para Dado Decimal");
+            dadoDecimal.FaceFrente = "1";
+            dadoDecimal.FaceLadoDireito = "2";
+            dadoDecimal.FaceLadoEsquerdo = "3";
+            dadoDecimal.FaceEmCima = "4";
+            dadoDecimal.FaceEmbaixo = "5";
+            dadoDecimal.FaceAtras = "6";
+            Console.WriteLine();
+
+            Console.WriteLine("Mostrando dado Decimal");
+            Console.WriteLine(dadoDecimal.ToString());
+
+            Console.WriteLine("Mostrando dado Binário");
+            Console.WriteLine(dadoBinario.ToString());
+
+            Console.WriteLine("Percaba que o objeto dado Binário se manteve sem alteração");
+
+            #endregion Prototype
         }
     }
 }
