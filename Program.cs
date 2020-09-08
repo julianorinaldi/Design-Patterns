@@ -3,6 +3,7 @@ using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FacotyMethod;
 using DesignPatterns.CreationalPatterns.Prototype;
 using DesignPatterns.CreationalPatterns.Singleton;
+using DesignPatterns.StructurePatterns.Adapter;
 using System;
 using System.Collections.Generic;
 using System.IO.Pipes;
@@ -17,7 +18,8 @@ namespace DesignPatterns
             //FactoryMethod();
             //AbstractFactory();
             //Builder();
-            Prototype();
+            //Prototype();
+            Adapter();
         }
 
         private static void Singleton()
@@ -164,6 +166,25 @@ namespace DesignPatterns
             Console.WriteLine("Percaba que o objeto dado Binário se manteve sem alteração");
 
             #endregion Prototype
+        }
+
+        public static void Adapter()
+        {
+            #region Adapter
+
+            NotaFiscalXML notaFiscalXML = new NotaFiscalXML("1234567890");
+            Console.WriteLine("Mostrando nota fiscal criada em XML");
+            Console.WriteLine(notaFiscalXML.GerarNotaFiscal());
+            Console.WriteLine();
+
+            Console.WriteLine("Adaptando Nota Fiscal XML para JSON");
+            Console.WriteLine();
+
+            NotaFiscalJSONAdapter notaFiscalJSONAdapter = new NotaFiscalJSONAdapter(notaFiscalXML);
+            Console.WriteLine("Mostrando nota fiscal adaptada para JSON");
+            Console.WriteLine(notaFiscalJSONAdapter.GerarNotaFiscal());
+
+            #endregion Adapter
         }
     }
 }
