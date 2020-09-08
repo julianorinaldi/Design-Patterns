@@ -1,4 +1,5 @@
 ﻿using DesignPatterns.CreationalPatterns.AbstractFactory;
+using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FacotyMethod;
 using DesignPatterns.CreationalPatterns.Singleton;
 using System;
@@ -13,7 +14,8 @@ namespace DesignPatterns
         {
             //Singleton();
             //FactoryMethod();
-            AbstractFactory();
+            //AbstractFactory();
+            Builder();
         }
 
         private static void Singleton()
@@ -105,6 +107,21 @@ namespace DesignPatterns
             }
 
             #endregion AbstractFactory
+        }
+
+        private static void Builder()
+        {
+            #region Builder
+
+            ITenisBuilder tenisBuilder = new Chuteira("Chuteira Adidas");
+            var tenis = Tenis.Builder(tenisBuilder);
+            Console.WriteLine(tenis.ToString());
+
+            tenisBuilder = new Sapatenis("Sapatenis WestCoast");
+            tenis = Tenis.Builder(tenisBuilder);
+            Console.WriteLine(tenis.ToString());
+
+            #endregion Builder
         }
     }
 }
