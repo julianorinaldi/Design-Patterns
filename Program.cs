@@ -180,9 +180,9 @@ namespace DesignPatterns
             Console.WriteLine("Adaptando Nota Fiscal XML para JSON");
             Console.WriteLine();
 
-            NotaFiscalJSONAdapter notaFiscalJSONAdapter = new NotaFiscalJSONAdapter(notaFiscalXML);
+            notaFiscalXML = new NotaFiscalJSONAdapter(notaFiscalXML);
             Console.WriteLine("Mostrando nota fiscal adaptada para JSON");
-            Console.WriteLine(notaFiscalJSONAdapter.GerarNotaFiscal());
+            Console.WriteLine(notaFiscalXML.GerarNotaFiscal());
 
             #endregion Adapter
         }
