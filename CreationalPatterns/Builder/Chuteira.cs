@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DesignPatterns.CreationalPatterns.Builder
+﻿namespace DesignPatterns.CreationalPatterns.Builder
 {
     public class Chuteira : ITenisBuilder
     {
