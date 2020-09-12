@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
-namespace DesignPatterns.CreationalPatterns.AbstractFactory
+﻿namespace DesignPatterns.CreationalPatterns.AbstractFactory
 {
     public class Carro
     {
