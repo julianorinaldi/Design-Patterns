@@ -4,9 +4,9 @@ using DesignPatterns.CreationalPatterns.FacotyMethod;
 using DesignPatterns.CreationalPatterns.Prototype;
 using DesignPatterns.CreationalPatterns.Singleton;
 using DesignPatterns.StructurePatterns.Adapter;
+using DesignPatterns.StructurePatterns.Brigde;
 using System;
 using System.Collections.Generic;
-using System.IO.Pipes;
 
 namespace DesignPatterns
 {
@@ -19,7 +19,8 @@ namespace DesignPatterns
             //AbstractFactory();
             //Builder();
             //Prototype();
-            Adapter();
+            //Adapter();
+            Bridge();
         }
 
         private static void Singleton()
@@ -185,6 +186,43 @@ namespace DesignPatterns
             Console.WriteLine(notaFiscalXML.GerarNotaFiscal());
 
             #endregion Adapter
+        }
+
+        private static void Bridge()
+        {
+            #region Brigde
+
+            // Bridge neste exemplo é o IPapel, dentro da classe concreta Impressora
+            // Neste exemplo estamos passando a instância no construtor, um princípio de Inversão de Controle
+
+            // Selecionar um papel
+            TipoPapelEnum tipoPapel = TipoPapelEnum.Vegetal;
+            IPapel papel = null;
+
+            switch (tipoPapel)
+            {
+                case TipoPapelEnum.Glossy:
+                    papel = new PapelGlossy();
+                    break;
+
+                case TipoPapelEnum.Reciclado:
+                    papel = new PapelReciclado();
+                    break;
+
+                case TipoPapelEnum.Sulfite:
+                    papel = new PapelSulfite();
+                    break;
+
+                case TipoPapelEnum.Vegetal:
+                    papel = new PapelVegetal();
+                    break;
+            }
+
+            Impressora impressora = new Impressora(papel);
+            Console.WriteLine(impressora.PapelConfigurado());
+            Console.WriteLine(impressora.Imprimir());
+
+            #endregion Brigde
         }
     }
 }
