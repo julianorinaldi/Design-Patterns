@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DesignPatterns.StructurePatterns.Composite
+﻿namespace DesignPatterns.StructurePatterns.Composite
 {
     /// <summary>
     /// Faz o papel do Leaf/Folha
