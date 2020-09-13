@@ -6,6 +6,7 @@ using DesignPatterns.CreationalPatterns.Singleton;
 using DesignPatterns.StructurePatterns.Adapter;
 using DesignPatterns.StructurePatterns.Brigde;
 using DesignPatterns.StructurePatterns.Composite;
+using DesignPatterns.StructurePatterns.Decorator;
 using System;
 using System.Collections.Generic;
 
@@ -22,7 +23,40 @@ namespace DesignPatterns
             //Prototype();
             //Adapter();
             //Bridge();
-            Composite();
+            //Composite();
+            Decorator();
+        }
+
+        private static void Decorator()
+        {
+            #region Decorator
+
+            string conteudo = "Aqui vamos construir um pequeno texto que será utilizado para criptografar em um momento e depois em outro momento vamos compactar, e também após demonstrar estes processos vamos reverter, ou seja, desencriptografar, e também descompactar.";
+            IDados dados = new ArquivoDeDados(conteudo);
+            Console.WriteLine("Listando o conteúdo do arquivo de dados sem alterações");
+            Console.WriteLine($"Conteúdo: {dados.LerDados()}");
+
+            Console.WriteLine();
+
+            IDados dadosEncriptados = new EncripitadorDeDados(dados);
+            Console.WriteLine("Listando o conteúdo do arquivo de dados com encriptação");
+            Console.WriteLine($"Conteúdo encriptado: {dados.LerDados()}");
+            Console.WriteLine($"Conteúdo desencriptado: {dadosEncriptados.LerDados()}");
+
+            Console.WriteLine();
+
+            dados = new ArquivoDeDados(conteudo);
+            Console.WriteLine("Listando o conteúdo do arquivo de dados sem alterações");
+            Console.WriteLine($"Conteúdo: {dados.LerDados()}");
+
+            Console.WriteLine();
+
+            IDados dadosCompactados = new CompactadorDeDados(dados);
+            Console.WriteLine("Listando o conteúdo do arquivo de dados com compactação");
+            Console.WriteLine($"Conteúdo compactador: {dados.LerDados()}");
+            Console.WriteLine($"Conteúdo descompactado: {dadosCompactados.LerDados()}");
+
+            #endregion Decorator
         }
 
         private static void Singleton()
