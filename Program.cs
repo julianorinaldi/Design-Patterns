@@ -5,6 +5,7 @@ using DesignPatterns.CreationalPatterns.Prototype;
 using DesignPatterns.CreationalPatterns.Singleton;
 using DesignPatterns.StructurePatterns.Adapter;
 using DesignPatterns.StructurePatterns.Brigde;
+using DesignPatterns.StructurePatterns.Composite;
 using System;
 using System.Collections.Generic;
 
@@ -20,7 +21,8 @@ namespace DesignPatterns
             //Builder();
             //Prototype();
             //Adapter();
-            Bridge();
+            //Bridge();
+            Composite();
         }
 
         private static void Singleton()
@@ -223,6 +225,28 @@ namespace DesignPatterns
             Console.WriteLine(impressora.Imprimir());
 
             #endregion Brigde
+        }
+
+        private static void Composite()
+        {
+            #region Composite
+
+            Arvore arvore = new Arvore("Árvore-Root");
+
+            Arvore ramo1 = new Arvore("Ramo1");
+            ramo1.AdicionarItem(new Folha("Ramo1-Folha1"));
+            ramo1.AdicionarItem(new Folha("Ramo1-Folha2"));
+
+            Arvore ramo2 = new Arvore("Ramo2");
+            ramo2.AdicionarItem(new Folha("Ramo2-Folha1"));
+            ramo2.AdicionarItem(new Folha("Ramo2-Folha2"));
+
+            arvore.AdicionarItem(ramo1).AdicionarItem(ramo2);
+
+            var saidaParaConsole = new SaidaParaConsole();
+            arvore.Criar(saidaParaConsole);
+
+            #endregion Composite
         }
     }
 }
