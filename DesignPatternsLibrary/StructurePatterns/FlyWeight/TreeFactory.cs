@@ -7,9 +7,9 @@ namespace DesignPatterns.StructurePatterns.FlyWeight
 {
     public class TreeFactory
     {
-        private List<TreeType> treeTypesList = new List<TreeType>();
+        private static List<TreeType> treeTypesList = new List<TreeType>();
 
-        public TreeType GetTreeType(TreeType treeType)
+        public static TreeType GetTreeType(TreeType treeType)
         {
             if (!treeTypesList.Contains(treeType))
             {
@@ -23,9 +23,14 @@ namespace DesignPatterns.StructurePatterns.FlyWeight
                                        item.Color == treeType.Color);
         }
 
-        public TreeType GetTreeType(string name, string color, string texture)
+        public static TreeType GetTreeType(string name, string color, string texture)
         {
             return GetTreeType(new TreeType(name, color, texture));
+        }
+
+        public static int GetAmountObjectsFlyWeight()
+        {
+            return treeTypesList.Count;
         }
     }
 }

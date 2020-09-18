@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>DesignPatterns</AssemblyName>
+    <RootNamespace>DesignPatterns</RootNamespace>
   </PropertyGroup>
 
 </Project>

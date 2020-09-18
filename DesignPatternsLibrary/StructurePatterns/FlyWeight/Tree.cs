@@ -6,6 +6,13 @@
         public int EixoY { get; set; }
         public TreeType Type { get; set; }
 
+        public Tree(int eixoX, int eixoY, TreeType type)
+        {
+            EixoX = eixoX;
+            EixoY = eixoY;
+            Type = type;
+        }
+
         public void Draw(IGraphicConsole graphicConsole)
         {
             graphicConsole.Draw(EixoX, EixoY);

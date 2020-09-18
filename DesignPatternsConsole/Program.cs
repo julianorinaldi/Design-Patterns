@@ -7,6 +7,8 @@ using DesignPatterns.StructurePatterns.Adapter;
 using DesignPatterns.StructurePatterns.Brigde;
 using DesignPatterns.StructurePatterns.Composite;
 using DesignPatterns.StructurePatterns.Decorator;
+using DesignPatterns.StructurePatterns.FlyWeight;
+using DesignPatternsConsole;
 using System;
 using System.Collections.Generic;
 
@@ -14,6 +16,8 @@ namespace DesignPatterns
 {
     internal class Program
     {
+        private static SaidaParaConsole saidaParaConsole = new SaidaParaConsole();
+
         private static void Main(string[] args)
         {
             //Singleton();
@@ -24,7 +28,25 @@ namespace DesignPatterns
             //Adapter();
             //Bridge();
             //Composite();
-            Decorator();
+            //Decorator();
+            FlyWeight();
+        }
+
+        private static void FlyWeight()
+        {
+            #region FlyWeight
+
+            var saidaConsole = new SaidaParaConsole();
+            Forest forest = new Forest(saidaConsole);
+            forest.PlantTree(1, 1, "Arvore1", "verde", "textura");
+            forest.PlantTree(10, 1, "Arvore1", "verde", "textura");
+            forest.PlantTree(20, 1, "Arvore1", "verde", "textura");
+
+            forest.Draw(new DesenharConsole());
+            saidaConsole.EscreverTexto();
+            saidaConsole.EscreverTexto("Observe a quantidade Objetos FlyWeight e o número de árvores");
+
+            #endregion FlyWeight
         }
 
         private static void Decorator()
@@ -33,28 +55,28 @@ namespace DesignPatterns
 
             string conteudo = "Aqui vamos construir um pequeno texto que será utilizado para criptografar em um momento e depois em outro momento vamos compactar, e também após demonstrar estes processos vamos reverter, ou seja, desencriptografar, e também descompactar.";
             IDados dados = new ArquivoDeDados(conteudo);
-            Console.WriteLine("Listando o conteúdo do arquivo de dados sem alterações");
-            Console.WriteLine($"Conteúdo: {dados.LerDados()}");
+            saidaParaConsole.EscreverTexto("Listando o conteúdo do arquivo de dados sem alterações");
+            saidaParaConsole.EscreverTexto($"Conteúdo: {dados.LerDados()}");
 
-            Console.WriteLine();
+            saidaParaConsole.EscreverTexto();
 
             IDados dadosEncriptados = new EncripitadorDeDados(dados);
-            Console.WriteLine("Listando o conteúdo do arquivo de dados com encriptação");
-            Console.WriteLine($"Conteúdo encriptado: {dados.LerDados()}");
-            Console.WriteLine($"Conteúdo desencriptado: {dadosEncriptados.LerDados()}");
+            saidaParaConsole.EscreverTexto("Listando o conteúdo do arquivo de dados com encriptação");
+            saidaParaConsole.EscreverTexto($"Conteúdo encriptado: {dados.LerDados()}");
+            saidaParaConsole.EscreverTexto($"Conteúdo desencriptado: {dadosEncriptados.LerDados()}");
 
-            Console.WriteLine();
+            saidaParaConsole.EscreverTexto();
 
             dados = new ArquivoDeDados(conteudo);
-            Console.WriteLine("Listando o conteúdo do arquivo de dados sem alterações");
-            Console.WriteLine($"Conteúdo: {dados.LerDados()}");
+            saidaParaConsole.EscreverTexto("Listando o conteúdo do arquivo de dados sem alterações");
+            saidaParaConsole.EscreverTexto($"Conteúdo: {dados.LerDados()}");
 
-            Console.WriteLine();
+            saidaParaConsole.EscreverTexto();
 
             IDados dadosCompactados = new CompactadorDeDados(dados);
-            Console.WriteLine("Listando o conteúdo do arquivo de dados com compactação");
-            Console.WriteLine($"Conteúdo compactador: {dados.LerDados()}");
-            Console.WriteLine($"Conteúdo descompactado: {dadosCompactados.LerDados()}");
+            saidaParaConsole.EscreverTexto("Listando o conteúdo do arquivo de dados com compactação");
+            saidaParaConsole.EscreverTexto($"Conteúdo compactador: {dados.LerDados()}");
+            saidaParaConsole.EscreverTexto($"Conteúdo descompactado: {dadosCompactados.LerDados()}");
 
             #endregion Decorator
         }
@@ -64,28 +86,28 @@ namespace DesignPatterns
             #region Singleton
 
             {
-                Console.WriteLine("###Singleton###");
-                Console.WriteLine("Iniciando objeto Singleton");
+                saidaParaConsole.EscreverTexto("###Singleton###");
+                saidaParaConsole.EscreverTexto("Iniciando objeto Singleton");
                 Universo universo = Universo.GetInstance;
-                Console.WriteLine("Adicionando uma galáxia");
+                saidaParaConsole.EscreverTexto("Adicionando uma galáxia");
                 universo.AdicionaGalaxia(new Galaxia("Via Láctea"));
-                Console.WriteLine("Listando as galáxias");
+                saidaParaConsole.EscreverTexto("Listando as galáxias");
                 string galaxiasOut = universo.MinhasGalaxias();
-                Console.WriteLine(galaxiasOut);
+                saidaParaConsole.EscreverTexto(galaxiasOut);
             }
 
             {
-                Console.WriteLine();
-                Console.WriteLine("Iniciando novo objeto Singleton");
+                saidaParaConsole.EscreverTexto();
+                saidaParaConsole.EscreverTexto("Iniciando novo objeto Singleton");
                 Universo universo2 = Universo.GetInstance;
-                Console.WriteLine("Adicionando uma galáxia");
+                saidaParaConsole.EscreverTexto("Adicionando uma galáxia");
                 universo2.AdicionaGalaxia(new Galaxia("Horion"));
-                Console.WriteLine("Listando as galáxias");
+                saidaParaConsole.EscreverTexto("Listando as galáxias");
                 string galaxiasOut2 = universo2.MinhasGalaxias();
-                Console.WriteLine(galaxiasOut2);
+                saidaParaConsole.EscreverTexto(galaxiasOut2);
             }
 
-            Console.WriteLine("Perceba que os o segundo objeto ainda é o primeiro");
+            saidaParaConsole.EscreverTexto("Perceba que os o segundo objeto ainda é o primeiro");
 
             #endregion Singleton
         }
@@ -94,18 +116,18 @@ namespace DesignPatterns
         {
             #region FactoryMethod
 
-            Console.WriteLine("###FactoryMethod###");
-            Console.WriteLine("Fabricando o primeiro personagem");
+            saidaParaConsole.EscreverTexto("###FactoryMethod###");
+            saidaParaConsole.EscreverTexto("Fabricando o primeiro personagem");
             IPersonagem personagem1 = FabricarPersonagem.CriarPersonagem(PersonagemEnum.LiuKang);
-            Console.WriteLine($"Personagem fabricado: {personagem1.Nome}");
+            saidaParaConsole.EscreverTexto($"Personagem fabricado: {personagem1.Nome}");
 
-            Console.WriteLine("Fabricando o segundo personagem");
+            saidaParaConsole.EscreverTexto("Fabricando o segundo personagem");
             IPersonagem personagem2 = FabricarPersonagem.CriarPersonagem(PersonagemEnum.Scorpion);
-            Console.WriteLine($"Personagem fabricado: {personagem2.Nome}");
+            saidaParaConsole.EscreverTexto($"Personagem fabricado: {personagem2.Nome}");
 
-            Console.WriteLine("Fabricando o primeiro personagem");
+            saidaParaConsole.EscreverTexto("Fabricando o primeiro personagem");
             IPersonagem personagem3 = FabricarPersonagem.CriarPersonagem(PersonagemEnum.SubZero);
-            Console.WriteLine($"Personagem fabricado: {personagem3.Nome}");
+            saidaParaConsole.EscreverTexto($"Personagem fabricado: {personagem3.Nome}");
 
             #endregion FactoryMethod
         }
@@ -144,7 +166,7 @@ namespace DesignPatterns
 
             foreach (var carroMontado in carrosMontados)
             {
-                Console.WriteLine($"Carro: {carroMontado.TipoCarro} \t Roda: {carroMontado.Roda.ToString()} \t Som: {carroMontado.Som.ToString()}");
+                saidaParaConsole.EscreverTexto($"Carro: {carroMontado.TipoCarro} \t Roda: {carroMontado.Roda.ToString()} \t Som: {carroMontado.Som.ToString()}");
             }
 
             #endregion AbstractFactory
@@ -156,11 +178,11 @@ namespace DesignPatterns
 
             ITenisBuilder tenisBuilder = new Chuteira("Chuteira Adidas");
             var tenis = Tenis.Builder(tenisBuilder);
-            Console.WriteLine(tenis.ToString());
+            saidaParaConsole.EscreverTexto(tenis.ToString());
 
             tenisBuilder = new Sapatenis("Sapatenis WestCoast");
             tenis = Tenis.Builder(tenisBuilder);
-            Console.WriteLine(tenis.ToString());
+            saidaParaConsole.EscreverTexto(tenis.ToString());
 
             #endregion Builder
         }
@@ -179,28 +201,28 @@ namespace DesignPatterns
                 FaceAtras = "110",
             };
 
-            Console.WriteLine("Dados do objeto Dado Binário");
-            Console.WriteLine(dadoBinario.ToString());
+            saidaParaConsole.EscreverTexto("Dados do objeto Dado Binário");
+            saidaParaConsole.EscreverTexto(dadoBinario.ToString());
 
-            Console.WriteLine("Clonando Dado Binário");
+            saidaParaConsole.EscreverTexto("Clonando Dado Binário");
             var dadoDecimal = dadoBinario.Clone() as Dado;
 
-            Console.WriteLine("Alterando dados para Dado Decimal");
+            saidaParaConsole.EscreverTexto("Alterando dados para Dado Decimal");
             dadoDecimal.FaceFrente = "1";
             dadoDecimal.FaceLadoDireito = "2";
             dadoDecimal.FaceLadoEsquerdo = "3";
             dadoDecimal.FaceEmCima = "4";
             dadoDecimal.FaceEmbaixo = "5";
             dadoDecimal.FaceAtras = "6";
-            Console.WriteLine();
+            saidaParaConsole.EscreverTexto();
 
-            Console.WriteLine("Mostrando dado Decimal");
-            Console.WriteLine(dadoDecimal.ToString());
+            saidaParaConsole.EscreverTexto("Mostrando dado Decimal");
+            saidaParaConsole.EscreverTexto(dadoDecimal.ToString());
 
-            Console.WriteLine("Mostrando dado Binário");
-            Console.WriteLine(dadoBinario.ToString());
+            saidaParaConsole.EscreverTexto("Mostrando dado Binário");
+            saidaParaConsole.EscreverTexto(dadoBinario.ToString());
 
-            Console.WriteLine("Percaba que o objeto dado Binário se manteve sem alteração");
+            saidaParaConsole.EscreverTexto("Percaba que o objeto dado Binário se manteve sem alteração");
 
             #endregion Prototype
         }
@@ -210,16 +232,16 @@ namespace DesignPatterns
             #region Adapter
 
             NotaFiscalXML notaFiscalXML = new NotaFiscalXML("1234567890");
-            Console.WriteLine("Mostrando nota fiscal criada em XML");
-            Console.WriteLine(notaFiscalXML.GerarNotaFiscal());
-            Console.WriteLine();
+            saidaParaConsole.EscreverTexto("Mostrando nota fiscal criada em XML");
+            saidaParaConsole.EscreverTexto(notaFiscalXML.GerarNotaFiscal());
+            saidaParaConsole.EscreverTexto();
 
-            Console.WriteLine("Adaptando Nota Fiscal XML para JSON");
-            Console.WriteLine();
+            saidaParaConsole.EscreverTexto("Adaptando Nota Fiscal XML para JSON");
+            saidaParaConsole.EscreverTexto();
 
             notaFiscalXML = new NotaFiscalJSONAdapter(notaFiscalXML);
-            Console.WriteLine("Mostrando nota fiscal adaptada para JSON");
-            Console.WriteLine(notaFiscalXML.GerarNotaFiscal());
+            saidaParaConsole.EscreverTexto("Mostrando nota fiscal adaptada para JSON");
+            saidaParaConsole.EscreverTexto(notaFiscalXML.GerarNotaFiscal());
 
             #endregion Adapter
         }
@@ -255,8 +277,8 @@ namespace DesignPatterns
             }
 
             Impressora impressora = new Impressora(papel);
-            Console.WriteLine(impressora.PapelConfigurado());
-            Console.WriteLine(impressora.Imprimir());
+            saidaParaConsole.EscreverTexto(impressora.PapelConfigurado());
+            saidaParaConsole.EscreverTexto(impressora.Imprimir());
 
             #endregion Brigde
         }
