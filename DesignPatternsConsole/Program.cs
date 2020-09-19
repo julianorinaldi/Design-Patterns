@@ -8,6 +8,7 @@ using DesignPatterns.StructurePatterns.Brigde;
 using DesignPatterns.StructurePatterns.Composite;
 using DesignPatterns.StructurePatterns.Decorator;
 using DesignPatterns.StructurePatterns.FlyWeight;
+using DesignPatterns.StructurePatterns.Proxy;
 using DesignPatternsConsole;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,20 @@ namespace DesignPatterns
             //Bridge();
             //Composite();
             //Decorator();
-            FlyWeight();
+            //FlyWeight();
+            Proxy();
+        }
+
+        private static void Proxy()
+        {
+            #region Proxy
+
+            var saidaConsole = new SaidaParaConsole();
+            IConsomeInternet internet = new Proxy(saidaConsole);
+            internet.Navegar("www.google.com");
+            internet.Navegar("www.microsoft.com");
+
+            #endregion Proxy
         }
 
         private static void FlyWeight()

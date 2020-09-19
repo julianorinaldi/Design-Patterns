@@ -1,7 +1,6 @@
 ﻿using DesignPatterns;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SadConsole;
 using System.Collections.Generic;
 
 namespace DesignPatternsConsole
