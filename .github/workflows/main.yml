@@ -13,16 +13,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup .NET Core
-      
-      - name: Install dependencies
-        run: dotnet restore
+ 
+# Não é necessário pois temos a compilação no Dockerfile      
+#      - name: Install dependencies
+#        run: dotnet restore
 
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
+#      - name: Build
+#        run: dotnet build --configuration Release --no-restore
 
       - uses: azure/docker-login@v1
-      - name: Docker Connect
         with:
           login-server: https://hub.docker.com/
           username: ${{ secrets.USERNAME }}
