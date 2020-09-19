@@ -12,24 +12,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
- 
-# Não é necessário pois temos a compilação no Dockerfile      
-#      - name: Install dependencies
-#        run: dotnet restore
+      - 
+        uses: actions/checkout@v2
 
-#      - name: Build
-#        run: dotnet build --configuration Release --no-restore
-
-      - uses: azure/docker-login@v1
+      - 
+        name: Login to DockerHub
+        uses: docker/login-action@v1 
         with:
           login-server: index.docker.io
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PWDDOCKERHUB }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build the Docker image
+      - 
+        name: Build the Docker image
         run: |
          docker build . --file Dockerfile --tag julianorinaldi/design-patterns-github:latest
-      - name: Docker Push
+
+      - 
+        name: Docker Push
         run: |
          docker push julianorinaldi/design-patterns-github:latest
