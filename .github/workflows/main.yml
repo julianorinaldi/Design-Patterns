@@ -1,8 +1,10 @@
 name: Build Docker
 
 on:
-  workflow_dispatch:
-
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
 
@@ -11,8 +13,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Setup .NET Core
+      
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
 
       - uses: azure/docker-login@v1
+      - name: Docker Connect
         with:
           login-server: https://hub.docker.com/
           username: ${{ secrets.USERNAME }}
