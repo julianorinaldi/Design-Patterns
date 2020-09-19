@@ -1,0 +1,26 @@
+name: Build Docker
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: azure/docker-login@v1
+        with:
+          login-server: https://hub.docker.com/
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PWDDOCKERHUB }}
+
+      - name: Build the Docker image
+        run: |
+         docker build . --file Dockerfile --tag julianorinaldi/design-patterns-github:latest
+      - name: Docker Push
+        run: |
+         docker push julianorinaldi/design-patterns-github:latest
