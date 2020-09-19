@@ -1,7 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Security.Authentication;
-using System.Security.Cryptography.X509Certificates;
 
 namespace DesignPatterns.StructurePatterns.FlyWeight
 {
