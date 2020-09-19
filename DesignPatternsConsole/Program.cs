@@ -1,4 +1,5 @@
-﻿using DesignPatterns.CreationalPatterns.AbstractFactory;
+﻿using DesignPatterns.BehavioralPatterns.ChainOfResponsability;
+using DesignPatterns.CreationalPatterns.AbstractFactory;
 using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FacotyMethod;
 using DesignPatterns.CreationalPatterns.Prototype;
@@ -12,6 +13,7 @@ using DesignPatterns.StructurePatterns.Proxy;
 using DesignPatternsConsole;
 using System;
 using System.Collections.Generic;
+using System.Net.Security;
 
 namespace DesignPatterns
 {
@@ -31,7 +33,33 @@ namespace DesignPatterns
             //Composite();
             //Decorator();
             //FlyWeight();
-            Proxy();
+            //Proxy();
+            ChainOfResposanbility();
+        }
+
+        private static void ChainOfResposanbility()
+        {
+            #region ChainOfResposanbility
+
+            var saidaConsole = new SaidaParaConsole();
+            List<Bagagem> bagagems = new List<Bagagem>();
+            bagagems.Add(new Bagagem("João", Origem.NACIONAL));
+            bagagems.Add(new Bagagem("José", Origem.INTERNACIONAL));
+            bagagems.Add(new Bagagem("Maria", Origem.NACIONAL));
+            bagagems.Add(new Bagagem("Clementina", Origem.INTERNACIONAL));
+            bagagems.Add(new Bagagem("Fulano", Origem.INTERNACIONAL));
+
+            FiscalizadorBagagem fiscalizadorNacional = new TratamentoNacional(saidaConsole);
+            FiscalizadorBagagem fiscalizadorInternacional = new TratamentoInternacional(saidaConsole);
+            fiscalizadorNacional.RegistrarFiscalizador(fiscalizadorInternacional);
+
+            foreach (var bagagem in bagagems)
+            {
+                fiscalizadorNacional.FiscalizarBagagem(bagagem);
+                saidaConsole.EscreverTexto();
+            }
+
+            #endregion ChainOfResposanbility
         }
 
         private static void Proxy()
