@@ -2,7 +2,7 @@
 using DesignPatterns.BehavioralPatterns.Command;
 using DesignPatterns.CreationalPatterns.AbstractFactory;
 using DesignPatterns.CreationalPatterns.Builder;
-using DesignPatterns.CreationalPatterns.FacotyMethod;
+using DesignPatterns.CreationalPatterns.FactoryMethod;
 using DesignPatterns.CreationalPatterns.Prototype;
 using DesignPatterns.CreationalPatterns.Singleton;
 using DesignPatterns.StructurePatterns.Adapter;

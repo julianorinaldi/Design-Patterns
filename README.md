@@ -38,27 +38,27 @@ Cada pasta que contém seu Design Pattern, tem um arquivo README.MD, que explica
 Os Design Pattens estão divididos em 3 grupos com 23 design de soluções:
 - Creational Pattern
   - [Abstract Factory](DesignPatternsLibrary/CreationalPatterns/AbstractFactory/)
-  - [Builder]
-  - [Facoty Method]
-  - [Prototype]
-  - [Singleton]
-- Structura Pattern]
-  - [Adapter]
-  - [Brigde]
-  - [Composite]
-  - [Decorator]
-  - [Facade]
-  - [Fly Weight]
-  - [Proxy]
+  - [Builder](DesignPatternsLibrary/CreationalPatterns/Builder/)
+  - [Factory Method](DesignPatternsLibrary/CreationalPatterns/FactoryMethod/)
+  - [Prototype](DesignPatternsLibrary/CreationalPatterns/Prototype/)
+  - [Singleton](DesignPatternsLibrary/CreationalPatterns/Singleton/)
+- Structure Pattern]
+  - [Adapter](DesignPatternsLibrary/StructurePatterns/Adapter/)
+  - [Brigde](DesignPatternsLibrary/StructurePatterns/Brigde/)
+  - [Composite](DesignPatternsLibrary/StructurePatterns/Composite/)
+  - [Decorator](DesignPatternsLibrary/StructurePatterns/Decorator/)
+  - [Facade](DesignPatternsLibrary/StructurePatterns/Facade/)
+  - [Fly Weight](DesignPatternsLibrary/StructurePatterns/FlyWeight/)
+  - [Proxy](DesignPatternsLibrary/StructurePatterns/Proxy/)
 - Behavioral Pattern
-  - [Chain Of Responsability]
-  - [Command]
-  - [Interpreter]
-  - [Iterator]
-  - [Mediator]
-  - [Memento]
-  - [Observer]
-  - [State]
-  - [Strategy]
-  - [Template Method]
-  - [Visitor]
+  - [Chain Of Responsability](DesignPatternsLibrary/BehavioralPatterns/ChainOfResponsability/)
+  - [Command](DesignPatternsLibrary/BehavioralPatterns/Command/)
+  - [Interpreter](DesignPatternsLibrary/BehavioralPatterns/Interpreter/)
+  - [Iterator](DesignPatternsLibrary/BehavioralPatterns/Iterator/)
+  - [Mediator](DesignPatternsLibrary/BehavioralPatterns/Mediator/)
+  - [Memento](DesignPatternsLibrary/BehavioralPatterns/Memento/)
+  - [Observer](DesignPatternsLibrary/BehavioralPatterns/Observer/)
+  - [State](DesignPatternsLibrary/BehavioralPatterns/State/)
+  - [Strategy](DesignPatternsLibrary/BehavioralPatterns/Strategy/)
+  - [Template Method](DesignPatternsLibrary/BehavioralPatterns/TemplateMethod/)
+  - [Visitor](DesignPatternsLibrary/BehavioralPatterns/Visitor/)

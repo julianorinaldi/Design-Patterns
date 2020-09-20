@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.CreationalPatterns.FacotyMethod
+﻿namespace DesignPatterns.CreationalPatterns.FactoryMethod
 {
     public class SubZero : IPersonagem
     {
