@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DesignPatterns.BehavioralPatterns.ChainOfResponsability
+﻿namespace DesignPatterns.BehavioralPatterns.ChainOfResponsability
 {
     public class TratamentoInternacional : FiscalizadorBagagem
     {
