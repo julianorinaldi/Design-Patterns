@@ -1,4 +1,5 @@
 ﻿using DesignPatterns.BehavioralPatterns.ChainOfResponsability;
+using DesignPatterns.BehavioralPatterns.Command;
 using DesignPatterns.CreationalPatterns.AbstractFactory;
 using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FacotyMethod;
@@ -13,7 +14,6 @@ using DesignPatterns.StructurePatterns.Proxy;
 using DesignPatternsConsole;
 using System;
 using System.Collections.Generic;
-using System.Net.Security;
 
 namespace DesignPatterns
 {
@@ -34,7 +34,35 @@ namespace DesignPatterns
             //Decorator();
             //FlyWeight();
             //Proxy();
-            ChainOfResposanbility();
+            //ChainOfResposanbility();
+            Command();
+        }
+
+        private static void Command()
+        {
+            #region Command
+
+            var saidaConsole = new SaidaParaConsole();
+            EditorTexto editorTexto = new EditorTexto(saidaConsole);
+            BotaoCopiarTexto botaoCopiaTexto = new BotaoCopiarTexto(editorTexto, saidaConsole);
+            BotaoColarTexto botaoColarTexto = new BotaoColarTexto(editorTexto, saidaConsole);
+            AtalhoCopiarTexto atalhoCopiarTexto = new AtalhoCopiarTexto(editorTexto, saidaConsole);
+            AtalhoColarTexto atalhoColarTexto = new AtalhoColarTexto(editorTexto, saidaConsole);
+
+            //Simulando execução do botões
+            botaoCopiaTexto.OnClick(editorTexto, EventArgs.Empty);
+            saidaConsole.EscreverTexto(Environment.NewLine);
+
+            botaoColarTexto.OnClick(editorTexto, EventArgs.Empty);
+            saidaConsole.EscreverTexto(Environment.NewLine);
+
+            atalhoCopiarTexto.OnClick(editorTexto, EventArgs.Empty);
+            saidaConsole.EscreverTexto(Environment.NewLine);
+
+            atalhoColarTexto.OnClick(editorTexto, EventArgs.Empty);
+            saidaConsole.EscreverTexto(Environment.NewLine);
+
+            #endregion Command
         }
 
         private static void ChainOfResposanbility()
