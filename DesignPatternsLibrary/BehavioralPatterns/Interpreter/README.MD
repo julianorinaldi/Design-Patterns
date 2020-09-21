@@ -14,7 +14,7 @@ Dado um texto em qualquer língua, o tradutor irá tentar encontrar sua traduç�
 
 - `Contexto` representa a classe `Context`
 - `Tradutor` representa a classe AbstractExpression
-- `TradutorParaEspanhol`, `TradutorParaFrances`, `TradutorParaIngles` representa a imprementação de cada expressão
+- `TradutorParaEspanhol`, `TradutorParaFrances`, `TradutorParaIngles` representa a implementação de cada expressão
 
 
 
