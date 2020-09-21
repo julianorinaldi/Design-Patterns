@@ -1,5 +1,6 @@
 ﻿using DesignPatterns.BehavioralPatterns.ChainOfResponsability;
 using DesignPatterns.BehavioralPatterns.Command;
+using DesignPatterns.BehavioralPatterns.Interpreter;
 using DesignPatterns.CreationalPatterns.AbstractFactory;
 using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FactoryMethod;
@@ -35,7 +36,34 @@ namespace DesignPatterns
             //FlyWeight();
             //Proxy();
             //ChainOfResposanbility();
-            Command();
+            //Command();
+            Interpreter();
+        }
+
+        private static void Interpreter()
+        {
+            #region Interpreter
+
+            var saidaConsole = new SaidaParaConsole();
+            ITranslator translator = new GoogleTranslate(saidaConsole);
+
+            Contexto contexto = new Contexto("Sabedoria");
+            Tradutor tradutor = new TradutorParaIngles(translator, saidaConsole);
+            tradutor.Interpretador(contexto);
+            saidaConsole.EscreverTexto($"{contexto.EntradaTexto} = {contexto.Traduzido}");
+            saidaConsole.EscreverTexto(Environment.NewLine);
+
+            tradutor = new TradutorParaEspanhol(translator, saidaConsole);
+            tradutor.Interpretador(contexto);
+            saidaConsole.EscreverTexto($"{contexto.EntradaTexto} = {contexto.Traduzido}");
+            saidaConsole.EscreverTexto(Environment.NewLine);
+
+            tradutor = new TradutorParaFrances(translator, saidaConsole);
+            tradutor.Interpretador(contexto);
+            saidaConsole.EscreverTexto($"{contexto.EntradaTexto} = {contexto.Traduzido}");
+            saidaConsole.EscreverTexto(Environment.NewLine);
+
+            #endregion Interpreter
         }
 
         private static void Command()
