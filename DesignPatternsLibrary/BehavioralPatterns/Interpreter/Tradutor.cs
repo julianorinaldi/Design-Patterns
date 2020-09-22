@@ -2,16 +2,13 @@
 {
     public abstract class Tradutor
     {
-        protected ISaidaDeTexto SaidaDeTexto { get; }
-
         protected ITranslator Translator { get; }
 
         protected abstract string Traduzir(string inputText);
 
-        public Tradutor(ITranslator translator, ISaidaDeTexto saidaDeTexto)
+        public Tradutor(ITranslator translator)
         {
             Translator = translator;
-            SaidaDeTexto = saidaDeTexto;
         }
 
         public void Interpretador(Contexto contexto)
