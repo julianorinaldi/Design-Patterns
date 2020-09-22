@@ -1,22 +1,21 @@
-﻿namespace DesignPatterns.BehavioralPatterns.Command
+﻿using DesignPatternsConsole;
+
+namespace DesignPatterns.BehavioralPatterns.Command
 {
     public class EditorTexto
     {
-        private readonly ISaidaDeTexto _saidaDeTexto;
-
-        public EditorTexto(ISaidaDeTexto saidaDeTexto)
+        public EditorTexto()
         {
-            _saidaDeTexto = saidaDeTexto;
         }
 
         public void SelecionarTexto()
         {
-            _saidaDeTexto.EscreverTexto($"Texto Selecionado!\t{nameof(EditorTexto)}.{nameof(SelecionarTexto)}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"Texto Selecionado!\t{nameof(EditorTexto)}.{nameof(SelecionarTexto)}");
         }
 
         public void ColarNoEditor(string texto)
         {
-            _saidaDeTexto.EscreverTexto($"Texto Colado! [{texto}]\t{nameof(EditorTexto)}.{nameof(ColarNoEditor)}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"Texto Colado! [{texto}]\t{nameof(EditorTexto)}.{nameof(ColarNoEditor)}");
         }
     }
 }
