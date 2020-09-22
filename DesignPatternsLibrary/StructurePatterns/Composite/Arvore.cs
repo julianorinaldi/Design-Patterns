@@ -28,13 +28,11 @@ namespace DesignPatterns.StructurePatterns.Composite
             return this;
         }
 
-        public void Criar(ISaidaDeTexto saidaDeTexto)
+        public void Criar()
         {
-            saidaDeTexto?.EscreverTexto(_nomeArvore);
-
             foreach (var estrutura in _estrutura)
             {
-                estrutura.Criar(saidaDeTexto);
+                estrutura.Criar();
             }
         }
     }

@@ -5,6 +5,6 @@
     /// </summary>
     public interface IEstruturaDaArvore
     {
-        public void Criar(ISaidaDeTexto saidaDeTexto);
+        public void Criar();
     }
 }

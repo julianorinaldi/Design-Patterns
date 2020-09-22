@@ -1,4 +1,6 @@
-﻿namespace DesignPatterns.StructurePatterns.Composite
+﻿using DesignPatternsConsole;
+
+namespace DesignPatterns.StructurePatterns.Composite
 {
     /// <summary>
     /// Faz o papel do Leaf/Folha
@@ -12,9 +14,9 @@
             _nomeFolha = nomeFolha;
         }
 
-        public void Criar(ISaidaDeTexto saidaDeTexto)
+        public void Criar()
         {
-            saidaDeTexto?.EscreverTexto(_nomeFolha);
+            GerenciadorSaida.SaidaConsole.EscreverTexto(_nomeFolha);
         }
     }
 }
