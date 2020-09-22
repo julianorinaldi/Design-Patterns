@@ -1,8 +1,10 @@
-﻿namespace DesignPatterns.BehavioralPatterns.ChainOfResponsability
+﻿using DesignPatternsConsole;
+
+namespace DesignPatterns.BehavioralPatterns.ChainOfResponsability
 {
     public class TratamentoNacional : FiscalizadorBagagem
     {
-        public TratamentoNacional(ISaidaDeTexto saidaDeTexto) : base(saidaDeTexto)
+        public TratamentoNacional() : base()
         {
         }
 
@@ -10,7 +12,7 @@
         {
             if (bagagem.OrigemViagem == Origem.NACIONAL)
             {
-                SaidaDeTexto.EscreverTexto($"{bagagem.OrigemViagem} - Bagagem do proprietário {bagagem.Proprietario} não terá fiscalização.");
+                GerenciadorSaida.SaidaConsole.EscreverTexto($"{bagagem.OrigemViagem} - Bagagem do proprietário {bagagem.Proprietario} não terá fiscalização.");
             }
             else if (ProximoFiscalizador != null)
             {

@@ -1,8 +1,10 @@
-﻿namespace DesignPatterns.BehavioralPatterns.ChainOfResponsability
+﻿using DesignPatternsConsole;
+
+namespace DesignPatterns.BehavioralPatterns.ChainOfResponsability
 {
     public class TratamentoInternacional : FiscalizadorBagagem
     {
-        public TratamentoInternacional(ISaidaDeTexto saidaDeTexto) : base(saidaDeTexto)
+        public TratamentoInternacional() : base()
         {
         }
 
@@ -11,7 +13,7 @@
             if (bagagem.OrigemViagem == Origem.INTERNACIONAL)
             {
                 bool aprovaEnteda = ReceitaFederal.AprovaEntradaBagagem(bagagem);
-                SaidaDeTexto.EscreverTexto($"{bagagem.OrigemViagem} - Bagagem do proprietário {bagagem.Proprietario} {(aprovaEnteda == false ? "não está" : "está")} aprovada.");
+                GerenciadorSaida.SaidaConsole.EscreverTexto($"{bagagem.OrigemViagem} - Bagagem do proprietário {bagagem.Proprietario} {(aprovaEnteda == false ? "não está" : "está")} aprovada.");
             }
             else if (ProximoFiscalizador != null)
             {

@@ -4,13 +4,6 @@
     {
         protected FiscalizadorBagagem ProximoFiscalizador { get; set; }
 
-        protected ISaidaDeTexto SaidaDeTexto { get; }
-
-        public FiscalizadorBagagem(ISaidaDeTexto saidaDeTexto)
-        {
-            SaidaDeTexto = saidaDeTexto;
-        }
-
         public void RegistrarFiscalizador(FiscalizadorBagagem fiscalizador)
         {
             ProximoFiscalizador = fiscalizador;
