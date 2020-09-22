@@ -1,14 +1,14 @@
-﻿namespace DesignPatterns.StructurePatterns.Proxy
+﻿using DesignPatternsConsole;
+
+namespace DesignPatterns.StructurePatterns.Proxy
 {
     public class Proxy : IConsomeInternet
     {
-        private readonly ISaidaDeTexto _saidaDeTexto;
         private readonly Internet _internet;
 
-        public Proxy(ISaidaDeTexto saidaDeTexto)
+        public Proxy()
         {
-            _saidaDeTexto = saidaDeTexto;
-            _internet = new Internet(saidaDeTexto);
+            _internet = new Internet();
         }
 
         public void Navegar(string url)
@@ -17,7 +17,7 @@
             if (gerenciadorSites.SiteEstaLiberado(url))
                 _internet.Navegar(url);
             else
-                _saidaDeTexto.EscreverTexto($"Não foi permitida a navegação na internet para a URL {url}!");
+                GerenciadorSaida.SaidaConsole.EscreverTexto($"Não foi permitida a navegação na internet para a URL {url}!");
         }
     }
 }
