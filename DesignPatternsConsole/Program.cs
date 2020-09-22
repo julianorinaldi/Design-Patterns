@@ -1,6 +1,7 @@
 ﻿using DesignPatterns.BehavioralPatterns.ChainOfResponsability;
 using DesignPatterns.BehavioralPatterns.Command;
 using DesignPatterns.BehavioralPatterns.Interpreter;
+using DesignPatterns.BehavioralPatterns.Iterator;
 using DesignPatterns.CreationalPatterns.AbstractFactory;
 using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FactoryMethod;
@@ -20,48 +21,87 @@ namespace DesignPatterns
 {
     internal class Program
     {
-        private static SaidaParaConsole saidaParaConsole = new SaidaParaConsole();
-
         private static void Main(string[] args)
         {
+            new GerenciadorSaida(new SaidaParaConsole(), new DesenharConsole());
+
             //Singleton();
+            //ProximoDesignPattern();
+
             //FactoryMethod();
+            //ProximoDesignPattern();
+
             //AbstractFactory();
+            //ProximoDesignPattern();
+
             //Builder();
+            //ProximoDesignPattern();
+
             //Prototype();
+            //ProximoDesignPattern();
+
             //Adapter();
+            //ProximoDesignPattern();
+
             //Bridge();
+            //ProximoDesignPattern();
+
             //Composite();
+            //ProximoDesignPattern();
+
             //Decorator();
+            //ProximoDesignPattern();
+
             //FlyWeight();
+            //ProximoDesignPattern();
+
             //Proxy();
+            //ProximoDesignPattern();
+
             //ChainOfResposanbility();
+            //ProximoDesignPattern();
+
             //Command();
-            Interpreter();
+            //ProximoDesignPattern();
+
+            //Interpreter();
+            //ProximoDesignPattern();
+
+            Iterator();
+            ProximoDesignPattern();
+        }
+
+        private static void Iterator()
+        {
+            #region Iterator
+
+            new Application()
+                .SendMessageAllFriends(new Profile(1, "Juliano"), "Olá amigo!");
+
+            #endregion Iterator
         }
 
         private static void Interpreter()
         {
             #region Interpreter
 
-            var saidaConsole = new SaidaParaConsole();
-            ITranslator translator = new GoogleTranslate(saidaConsole);
+            ITranslator translator = new GoogleTranslate();
 
             Contexto contexto = new Contexto("Sabedoria");
-            Tradutor tradutor = new TradutorParaIngles(translator, saidaConsole);
+            Tradutor tradutor = new TradutorParaIngles(translator);
             tradutor.Interpretador(contexto);
-            saidaConsole.EscreverTexto($"{contexto.EntradaTexto} = {contexto.Traduzido}");
-            saidaConsole.EscreverTexto(Environment.NewLine);
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"{contexto.EntradaTexto} = {contexto.Traduzido}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
 
-            tradutor = new TradutorParaEspanhol(translator, saidaConsole);
+            tradutor = new TradutorParaEspanhol(translator);
             tradutor.Interpretador(contexto);
-            saidaConsole.EscreverTexto($"{contexto.EntradaTexto} = {contexto.Traduzido}");
-            saidaConsole.EscreverTexto(Environment.NewLine);
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"{contexto.EntradaTexto} = {contexto.Traduzido}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
 
-            tradutor = new TradutorParaFrances(translator, saidaConsole);
+            tradutor = new TradutorParaFrances(translator);
             tradutor.Interpretador(contexto);
-            saidaConsole.EscreverTexto($"{contexto.EntradaTexto} = {contexto.Traduzido}");
-            saidaConsole.EscreverTexto(Environment.NewLine);
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"{contexto.EntradaTexto} = {contexto.Traduzido}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
 
             #endregion Interpreter
         }
@@ -70,25 +110,24 @@ namespace DesignPatterns
         {
             #region Command
 
-            var saidaConsole = new SaidaParaConsole();
-            EditorTexto editorTexto = new EditorTexto(saidaConsole);
-            BotaoCopiarTexto botaoCopiaTexto = new BotaoCopiarTexto(editorTexto, saidaConsole);
-            BotaoColarTexto botaoColarTexto = new BotaoColarTexto(editorTexto, saidaConsole);
-            AtalhoCopiarTexto atalhoCopiarTexto = new AtalhoCopiarTexto(editorTexto, saidaConsole);
-            AtalhoColarTexto atalhoColarTexto = new AtalhoColarTexto(editorTexto, saidaConsole);
+            EditorTexto editorTexto = new EditorTexto();
+            BotaoCopiarTexto botaoCopiaTexto = new BotaoCopiarTexto(editorTexto);
+            BotaoColarTexto botaoColarTexto = new BotaoColarTexto(editorTexto);
+            AtalhoCopiarTexto atalhoCopiarTexto = new AtalhoCopiarTexto(editorTexto);
+            AtalhoColarTexto atalhoColarTexto = new AtalhoColarTexto(editorTexto);
 
             //Simulando execução do botões
             botaoCopiaTexto.OnClick(editorTexto, EventArgs.Empty);
-            saidaConsole.EscreverTexto(Environment.NewLine);
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
 
             botaoColarTexto.OnClick(editorTexto, EventArgs.Empty);
-            saidaConsole.EscreverTexto(Environment.NewLine);
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
 
             atalhoCopiarTexto.OnClick(editorTexto, EventArgs.Empty);
-            saidaConsole.EscreverTexto(Environment.NewLine);
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
 
             atalhoColarTexto.OnClick(editorTexto, EventArgs.Empty);
-            saidaConsole.EscreverTexto(Environment.NewLine);
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
 
             #endregion Command
         }
@@ -97,7 +136,6 @@ namespace DesignPatterns
         {
             #region ChainOfResposanbility
 
-            var saidaConsole = new SaidaParaConsole();
             List<Bagagem> bagagems = new List<Bagagem>();
             bagagems.Add(new Bagagem("João", Origem.NACIONAL));
             bagagems.Add(new Bagagem("José", Origem.INTERNACIONAL));
@@ -105,14 +143,14 @@ namespace DesignPatterns
             bagagems.Add(new Bagagem("Clementina", Origem.INTERNACIONAL));
             bagagems.Add(new Bagagem("Fulano", Origem.INTERNACIONAL));
 
-            FiscalizadorBagagem fiscalizadorNacional = new TratamentoNacional(saidaConsole);
-            FiscalizadorBagagem fiscalizadorInternacional = new TratamentoInternacional(saidaConsole);
+            FiscalizadorBagagem fiscalizadorNacional = new TratamentoNacional();
+            FiscalizadorBagagem fiscalizadorInternacional = new TratamentoInternacional();
             fiscalizadorNacional.RegistrarFiscalizador(fiscalizadorInternacional);
 
             foreach (var bagagem in bagagems)
             {
                 fiscalizadorNacional.FiscalizarBagagem(bagagem);
-                saidaConsole.EscreverTexto();
+                GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
             }
 
             #endregion ChainOfResposanbility
@@ -122,8 +160,7 @@ namespace DesignPatterns
         {
             #region Proxy
 
-            var saidaConsole = new SaidaParaConsole();
-            IConsomeInternet internet = new Proxy(saidaConsole);
+            IConsomeInternet internet = new Proxy();
             internet.Navegar("www.google.com");
             internet.Navegar("www.microsoft.com");
 
@@ -134,15 +171,14 @@ namespace DesignPatterns
         {
             #region FlyWeight
 
-            var saidaConsole = new SaidaParaConsole();
-            Forest forest = new Forest(saidaConsole);
+            Forest forest = new Forest();
             forest.PlantTree(1, 1, "Arvore1", "verde", "textura");
             forest.PlantTree(10, 1, "Arvore1", "verde", "textura");
             forest.PlantTree(20, 1, "Arvore1", "verde", "textura");
 
-            forest.Draw(new DesenharConsole());
-            saidaConsole.EscreverTexto();
-            saidaConsole.EscreverTexto("Observe a quantidade Objetos FlyWeight e o número de árvores");
+            forest.Draw();
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Observe a quantidade Objetos FlyWeight e o número de árvores");
 
             #endregion FlyWeight
         }
@@ -153,28 +189,28 @@ namespace DesignPatterns
 
             string conteudo = "Aqui vamos construir um pequeno texto que será utilizado para criptografar em um momento e depois em outro momento vamos compactar, e também após demonstrar estes processos vamos reverter, ou seja, desencriptografar, e também descompactar.";
             IDados dados = new ArquivoDeDados(conteudo);
-            saidaParaConsole.EscreverTexto("Listando o conteúdo do arquivo de dados sem alterações");
-            saidaParaConsole.EscreverTexto($"Conteúdo: {dados.LerDados()}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Listando o conteúdo do arquivo de dados sem alterações");
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"Conteúdo: {dados.LerDados()}");
 
-            saidaParaConsole.EscreverTexto();
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
 
             IDados dadosEncriptados = new EncripitadorDeDados(dados);
-            saidaParaConsole.EscreverTexto("Listando o conteúdo do arquivo de dados com encriptação");
-            saidaParaConsole.EscreverTexto($"Conteúdo encriptado: {dados.LerDados()}");
-            saidaParaConsole.EscreverTexto($"Conteúdo desencriptado: {dadosEncriptados.LerDados()}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Listando o conteúdo do arquivo de dados com encriptação");
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"Conteúdo encriptado: {dados.LerDados()}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"Conteúdo desencriptado: {dadosEncriptados.LerDados()}");
 
-            saidaParaConsole.EscreverTexto();
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
 
             dados = new ArquivoDeDados(conteudo);
-            saidaParaConsole.EscreverTexto("Listando o conteúdo do arquivo de dados sem alterações");
-            saidaParaConsole.EscreverTexto($"Conteúdo: {dados.LerDados()}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Listando o conteúdo do arquivo de dados sem alterações");
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"Conteúdo: {dados.LerDados()}");
 
-            saidaParaConsole.EscreverTexto();
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
 
             IDados dadosCompactados = new CompactadorDeDados(dados);
-            saidaParaConsole.EscreverTexto("Listando o conteúdo do arquivo de dados com compactação");
-            saidaParaConsole.EscreverTexto($"Conteúdo compactador: {dados.LerDados()}");
-            saidaParaConsole.EscreverTexto($"Conteúdo descompactado: {dadosCompactados.LerDados()}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Listando o conteúdo do arquivo de dados com compactação");
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"Conteúdo compactador: {dados.LerDados()}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"Conteúdo descompactado: {dadosCompactados.LerDados()}");
 
             #endregion Decorator
         }
@@ -184,28 +220,28 @@ namespace DesignPatterns
             #region Singleton
 
             {
-                saidaParaConsole.EscreverTexto("###Singleton###");
-                saidaParaConsole.EscreverTexto("Iniciando objeto Singleton");
+                GerenciadorSaida.SaidaConsole.EscreverTexto("###Singleton###");
+                GerenciadorSaida.SaidaConsole.EscreverTexto("Iniciando objeto Singleton");
                 Universo universo = Universo.GetInstance;
-                saidaParaConsole.EscreverTexto("Adicionando uma galáxia");
+                GerenciadorSaida.SaidaConsole.EscreverTexto("Adicionando uma galáxia");
                 universo.AdicionaGalaxia(new Galaxia("Via Láctea"));
-                saidaParaConsole.EscreverTexto("Listando as galáxias");
+                GerenciadorSaida.SaidaConsole.EscreverTexto("Listando as galáxias");
                 string galaxiasOut = universo.MinhasGalaxias();
-                saidaParaConsole.EscreverTexto(galaxiasOut);
+                GerenciadorSaida.SaidaConsole.EscreverTexto(galaxiasOut);
             }
 
             {
-                saidaParaConsole.EscreverTexto();
-                saidaParaConsole.EscreverTexto("Iniciando novo objeto Singleton");
+                GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
+                GerenciadorSaida.SaidaConsole.EscreverTexto("Iniciando novo objeto Singleton");
                 Universo universo2 = Universo.GetInstance;
-                saidaParaConsole.EscreverTexto("Adicionando uma galáxia");
+                GerenciadorSaida.SaidaConsole.EscreverTexto("Adicionando uma galáxia");
                 universo2.AdicionaGalaxia(new Galaxia("Horion"));
-                saidaParaConsole.EscreverTexto("Listando as galáxias");
+                GerenciadorSaida.SaidaConsole.EscreverTexto("Listando as galáxias");
                 string galaxiasOut2 = universo2.MinhasGalaxias();
-                saidaParaConsole.EscreverTexto(galaxiasOut2);
+                GerenciadorSaida.SaidaConsole.EscreverTexto(galaxiasOut2);
             }
 
-            saidaParaConsole.EscreverTexto("Perceba que os o segundo objeto ainda é o primeiro");
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Perceba que os o segundo objeto ainda é o primeiro");
 
             #endregion Singleton
         }
@@ -214,18 +250,18 @@ namespace DesignPatterns
         {
             #region FactoryMethod
 
-            saidaParaConsole.EscreverTexto("###FactoryMethod###");
-            saidaParaConsole.EscreverTexto("Fabricando o primeiro personagem");
+            GerenciadorSaida.SaidaConsole.EscreverTexto("###FactoryMethod###");
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Fabricando o primeiro personagem");
             IPersonagem personagem1 = FabricarPersonagem.CriarPersonagem(PersonagemEnum.LiuKang);
-            saidaParaConsole.EscreverTexto($"Personagem fabricado: {personagem1.Nome}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"Personagem fabricado: {personagem1.Nome}");
 
-            saidaParaConsole.EscreverTexto("Fabricando o segundo personagem");
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Fabricando o segundo personagem");
             IPersonagem personagem2 = FabricarPersonagem.CriarPersonagem(PersonagemEnum.Scorpion);
-            saidaParaConsole.EscreverTexto($"Personagem fabricado: {personagem2.Nome}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"Personagem fabricado: {personagem2.Nome}");
 
-            saidaParaConsole.EscreverTexto("Fabricando o primeiro personagem");
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Fabricando o primeiro personagem");
             IPersonagem personagem3 = FabricarPersonagem.CriarPersonagem(PersonagemEnum.SubZero);
-            saidaParaConsole.EscreverTexto($"Personagem fabricado: {personagem3.Nome}");
+            GerenciadorSaida.SaidaConsole.EscreverTexto($"Personagem fabricado: {personagem3.Nome}");
 
             #endregion FactoryMethod
         }
@@ -264,7 +300,7 @@ namespace DesignPatterns
 
             foreach (var carroMontado in carrosMontados)
             {
-                saidaParaConsole.EscreverTexto($"Carro: {carroMontado.TipoCarro} \t Roda: {carroMontado.Roda.ToString()} \t Som: {carroMontado.Som.ToString()}");
+                GerenciadorSaida.SaidaConsole.EscreverTexto($"Carro: {carroMontado.TipoCarro} \t Roda: {carroMontado.Roda.ToString()} \t Som: {carroMontado.Som.ToString()}");
             }
 
             #endregion AbstractFactory
@@ -276,11 +312,11 @@ namespace DesignPatterns
 
             ITenisBuilder tenisBuilder = new Chuteira("Chuteira Adidas");
             var tenis = Tenis.Builder(tenisBuilder);
-            saidaParaConsole.EscreverTexto(tenis.ToString());
+            GerenciadorSaida.SaidaConsole.EscreverTexto(tenis.ToString());
 
             tenisBuilder = new Sapatenis("Sapatenis WestCoast");
             tenis = Tenis.Builder(tenisBuilder);
-            saidaParaConsole.EscreverTexto(tenis.ToString());
+            GerenciadorSaida.SaidaConsole.EscreverTexto(tenis.ToString());
 
             #endregion Builder
         }
@@ -299,28 +335,28 @@ namespace DesignPatterns
                 FaceAtras = "110",
             };
 
-            saidaParaConsole.EscreverTexto("Dados do objeto Dado Binário");
-            saidaParaConsole.EscreverTexto(dadoBinario.ToString());
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Dados do objeto Dado Binário");
+            GerenciadorSaida.SaidaConsole.EscreverTexto(dadoBinario.ToString());
 
-            saidaParaConsole.EscreverTexto("Clonando Dado Binário");
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Clonando Dado Binário");
             var dadoDecimal = dadoBinario.Clone() as Dado;
 
-            saidaParaConsole.EscreverTexto("Alterando dados para Dado Decimal");
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Alterando dados para Dado Decimal");
             dadoDecimal.FaceFrente = "1";
             dadoDecimal.FaceLadoDireito = "2";
             dadoDecimal.FaceLadoEsquerdo = "3";
             dadoDecimal.FaceEmCima = "4";
             dadoDecimal.FaceEmbaixo = "5";
             dadoDecimal.FaceAtras = "6";
-            saidaParaConsole.EscreverTexto();
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
 
-            saidaParaConsole.EscreverTexto("Mostrando dado Decimal");
-            saidaParaConsole.EscreverTexto(dadoDecimal.ToString());
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Mostrando dado Decimal");
+            GerenciadorSaida.SaidaConsole.EscreverTexto(dadoDecimal.ToString());
 
-            saidaParaConsole.EscreverTexto("Mostrando dado Binário");
-            saidaParaConsole.EscreverTexto(dadoBinario.ToString());
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Mostrando dado Binário");
+            GerenciadorSaida.SaidaConsole.EscreverTexto(dadoBinario.ToString());
 
-            saidaParaConsole.EscreverTexto("Percaba que o objeto dado Binário se manteve sem alteração");
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Percaba que o objeto dado Binário se manteve sem alteração");
 
             #endregion Prototype
         }
@@ -330,16 +366,16 @@ namespace DesignPatterns
             #region Adapter
 
             NotaFiscalXML notaFiscalXML = new NotaFiscalXML("1234567890");
-            saidaParaConsole.EscreverTexto("Mostrando nota fiscal criada em XML");
-            saidaParaConsole.EscreverTexto(notaFiscalXML.GerarNotaFiscal());
-            saidaParaConsole.EscreverTexto();
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Mostrando nota fiscal criada em XML");
+            GerenciadorSaida.SaidaConsole.EscreverTexto(notaFiscalXML.GerarNotaFiscal());
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
 
-            saidaParaConsole.EscreverTexto("Adaptando Nota Fiscal XML para JSON");
-            saidaParaConsole.EscreverTexto();
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Adaptando Nota Fiscal XML para JSON");
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
 
             notaFiscalXML = new NotaFiscalJSONAdapter(notaFiscalXML);
-            saidaParaConsole.EscreverTexto("Mostrando nota fiscal adaptada para JSON");
-            saidaParaConsole.EscreverTexto(notaFiscalXML.GerarNotaFiscal());
+            GerenciadorSaida.SaidaConsole.EscreverTexto("Mostrando nota fiscal adaptada para JSON");
+            GerenciadorSaida.SaidaConsole.EscreverTexto(notaFiscalXML.GerarNotaFiscal());
 
             #endregion Adapter
         }
@@ -375,8 +411,8 @@ namespace DesignPatterns
             }
 
             Impressora impressora = new Impressora(papel);
-            saidaParaConsole.EscreverTexto(impressora.PapelConfigurado());
-            saidaParaConsole.EscreverTexto(impressora.Imprimir());
+            GerenciadorSaida.SaidaConsole.EscreverTexto(impressora.PapelConfigurado());
+            GerenciadorSaida.SaidaConsole.EscreverTexto(impressora.Imprimir());
 
             #endregion Brigde
         }
@@ -397,10 +433,16 @@ namespace DesignPatterns
 
             arvore.AdicionarItem(ramo1).AdicionarItem(ramo2);
 
-            var saidaParaConsole = new SaidaParaConsole();
-            arvore.Criar(saidaParaConsole);
+            arvore.Criar();
 
             #endregion Composite
+        }
+
+        private static void ProximoDesignPattern()
+        {
+            GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
+            GerenciadorSaida.SaidaConsole.AguardaUmaTecla();
+            GerenciadorSaida.SaidaConsole.Limpar();
         }
     }
 }

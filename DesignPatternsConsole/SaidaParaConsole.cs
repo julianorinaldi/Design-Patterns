@@ -4,14 +4,19 @@ namespace DesignPatterns
 {
     public class SaidaParaConsole : ISaidaDeTexto
     {
+        public void AguardaUmaTecla()
+        {
+            Console.ReadKey();
+        }
+
         public void EscreverTexto(string mensagem)
         {
             Console.WriteLine(mensagem);
         }
 
-        public void EscreverTexto()
+        public void Limpar()
         {
-            Console.WriteLine();
+            Console.Clear();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using DesignPatterns;
-using DesignPatterns.BehavioralPatterns.Interpreter;
+﻿using DesignPatterns.BehavioralPatterns.Interpreter;
 using OpenQA.Selenium;
 using System;
 using System.Web;
@@ -12,7 +11,7 @@ namespace DesignPatternsConsole
         private string _targetLanguage;
         private string _textTranslated;
 
-        public GoogleTranslate(ISaidaDeTexto output) : base(output)
+        public GoogleTranslate() : base()
         {
         }
 
@@ -28,8 +27,8 @@ namespace DesignPatternsConsole
             }
             catch (Exception e)
             {
-                Output.EscreverTexto($"Não foi possível traduzir texto {_textToTranslate}. Erro: {e.Message}");
-                Output.EscreverTexto(Environment.NewLine);
+                GerenciadorSaida.SaidaConsole.EscreverTexto($"Não foi possível traduzir texto {_textToTranslate}. Erro: {e.Message}");
+                GerenciadorSaida.SaidaConsole.EscreverTexto(Environment.NewLine);
             }
         }
 
