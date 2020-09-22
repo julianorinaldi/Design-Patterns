@@ -1,4 +1,6 @@
-﻿namespace DesignPatterns.StructurePatterns.FlyWeight
+﻿using DesignPatternsConsole;
+
+namespace DesignPatterns.StructurePatterns.FlyWeight
 {
     public class TreeType
     {
@@ -13,9 +15,9 @@
             Texture = texture;
         }
 
-        public void Draw(IGraphicConsole graphicConsole, int eixoX, int eixoY)
+        public void Draw(int eixoX, int eixoY)
         {
-            graphicConsole.Draw(eixoX, eixoY);
+            GerenciadorSaida.TelaGraficaConsole.Draw(eixoX, eixoY);
         }
 
         public override bool Equals(object obj)

@@ -1,4 +1,6 @@
-﻿namespace DesignPatterns.StructurePatterns.FlyWeight
+﻿using DesignPatternsConsole;
+
+namespace DesignPatterns.StructurePatterns.FlyWeight
 {
     public class Tree
     {
@@ -13,9 +15,9 @@
             Type = type;
         }
 
-        public void Draw(IGraphicConsole graphicConsole)
+        public void Draw()
         {
-            graphicConsole.Draw(EixoX, EixoY);
+            GerenciadorSaida.TelaGraficaConsole.Draw(EixoX, EixoY);
         }
     }
 }
