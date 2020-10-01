@@ -1,6 +1,4 @@
-﻿using DesignPatternsConsole;
-
-namespace DesignPatterns.StructurePatterns.Composite
+﻿namespace DesignPatterns.StructurePatterns.Composite
 {
     /// <summary>
     /// Faz o papel do Leaf/Folha
