@@ -1,6 +1,4 @@
-﻿using DesignPatternsConsole;
-
-namespace DesignPatterns.BehavioralPatterns.Iterator
+﻿namespace DesignPatterns.BehavioralPatterns.Iterator
 {
     public class Application
     {
