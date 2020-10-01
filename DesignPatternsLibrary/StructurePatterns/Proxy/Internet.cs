@@ -1,6 +1,4 @@
-﻿using DesignPatternsConsole;
-
-namespace DesignPatterns.StructurePatterns.Proxy
+﻿namespace DesignPatterns.StructurePatterns.Proxy
 {
     internal class Internet : IConsomeInternet
     {
