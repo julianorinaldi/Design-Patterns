@@ -1,4 +1,5 @@
-﻿using DesignPatterns.BehavioralPatterns.Interpreter;
+﻿using DesignPatterns;
+using DesignPatterns.BehavioralPatterns.Interpreter;
 using OpenQA.Selenium;
 using System;
 using System.Web;

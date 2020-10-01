@@ -2,6 +2,7 @@
 using DesignPatterns.BehavioralPatterns.Command;
 using DesignPatterns.BehavioralPatterns.Interpreter;
 using DesignPatterns.BehavioralPatterns.Iterator;
+using DesignPatterns.BehavioralPatterns.Mediator;
 using DesignPatterns.CreationalPatterns.AbstractFactory;
 using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FactoryMethod;
@@ -67,8 +68,26 @@ namespace DesignPatterns
             //Interpreter();
             //ProximoDesignPattern();
 
-            Iterator();
+            //Iterator();
+            //ProximoDesignPattern();
+
+            Mediator();
             ProximoDesignPattern();
+        }
+
+        private static void Mediator()
+        {
+            #region Mediator
+
+            var dialog = new AuthDialog();
+            dialog.TextboxLogin.Click();
+            dialog.TextboxLogin.Keypress();
+            dialog.TextboxPassword.Click();
+            dialog.TextboxPassword.Keypress();
+            dialog.CheckboxRememberMe.Click();
+            dialog.ButtonOK.Click();
+
+            #endregion Mediator
         }
 
         private static void Iterator()
