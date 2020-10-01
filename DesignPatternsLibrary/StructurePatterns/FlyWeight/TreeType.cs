@@ -1,6 +1,4 @@
-﻿using DesignPatternsConsole;
-
-namespace DesignPatterns.StructurePatterns.FlyWeight
+﻿namespace DesignPatterns.StructurePatterns.FlyWeight
 {
     public class TreeType
     {
