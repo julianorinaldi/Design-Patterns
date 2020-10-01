@@ -1,6 +1,4 @@
-﻿using DesignPatternsConsole;
-
-namespace DesignPatterns.BehavioralPatterns.Interpreter
+﻿namespace DesignPatterns.BehavioralPatterns.Interpreter
 {
     public class TradutorParaEspanhol : Tradutor
     {
