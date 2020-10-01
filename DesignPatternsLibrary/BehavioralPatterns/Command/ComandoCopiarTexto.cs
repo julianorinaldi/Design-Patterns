@@ -1,6 +1,4 @@
-﻿using DesignPatternsConsole;
-
-namespace DesignPatterns.BehavioralPatterns.Command
+﻿namespace DesignPatterns.BehavioralPatterns.Command
 {
     // Comandos concretos
     public class ComandoCopiarTexto : ICommand
