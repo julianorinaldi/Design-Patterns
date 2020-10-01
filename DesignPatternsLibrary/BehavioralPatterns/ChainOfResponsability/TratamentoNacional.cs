@@ -1,6 +1,4 @@
-﻿using DesignPatternsConsole;
-
-namespace DesignPatterns.BehavioralPatterns.ChainOfResponsability
+﻿namespace DesignPatterns.BehavioralPatterns.ChainOfResponsability
 {
     public class TratamentoNacional : FiscalizadorBagagem
     {
