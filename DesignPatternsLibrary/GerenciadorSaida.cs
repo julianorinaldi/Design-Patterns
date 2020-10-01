@@ -1,6 +1,4 @@
-﻿using DesignPatterns;
-
-namespace DesignPatternsConsole
+﻿namespace DesignPatterns
 {
     public class GerenciadorSaida
     {
