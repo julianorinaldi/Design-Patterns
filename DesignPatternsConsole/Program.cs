@@ -3,6 +3,7 @@ using DesignPatterns.BehavioralPatterns.Command;
 using DesignPatterns.BehavioralPatterns.Interpreter;
 using DesignPatterns.BehavioralPatterns.Iterator;
 using DesignPatterns.BehavioralPatterns.Mediator;
+using DesignPatterns.BehavioralPatterns.Memento;
 using DesignPatterns.CreationalPatterns.AbstractFactory;
 using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FactoryMethod;
@@ -71,8 +72,28 @@ namespace DesignPatterns
             //Iterator();
             //ProximoDesignPattern();
 
-            Mediator();
+            //Mediator();
+            //ProximoDesignPattern();
+
+            Mememento();
             ProximoDesignPattern();
+        }
+
+        private static void Mememento()
+        {
+            #region Mememento
+
+            var Editor = new Editor();
+            Editor.SetText("Texto do Editor Inicial");
+
+            CommandM commandM = new CommandM();
+            commandM.MakeBackup(Editor.CreateSnapshot());
+
+            Editor.SetText("Alterado texto no editor.");
+
+            commandM.Undo();
+
+            #endregion Mememento
         }
 
         private static void Mediator()
