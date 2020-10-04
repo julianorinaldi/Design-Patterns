@@ -4,6 +4,7 @@ using DesignPatterns.BehavioralPatterns.Interpreter;
 using DesignPatterns.BehavioralPatterns.Iterator;
 using DesignPatterns.BehavioralPatterns.Mediator;
 using DesignPatterns.BehavioralPatterns.Memento;
+using DesignPatterns.BehavioralPatterns.Observer;
 using DesignPatterns.CreationalPatterns.AbstractFactory;
 using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FactoryMethod;
@@ -18,6 +19,8 @@ using DesignPatterns.StructurePatterns.Proxy;
 using DesignPatternsConsole;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
@@ -75,8 +78,31 @@ namespace DesignPatterns
             //Mediator();
             //ProximoDesignPattern();
 
-            Mememento();
+            //Mememento();
+            //ProximoDesignPattern();
+
+            Observer();
             ProximoDesignPattern();
+        }
+
+        private static void Observer()
+        {
+            #region Observer
+
+            PublisherMoneyTime publisherMoneyTime = new PublisherMoneyTime();
+
+            ISubscriberMoney moneyObserver = new MoneyObserver("João");
+            publisherMoneyTime.Subscribe(moneyObserver);
+
+            Task.Run(() => publisherMoneyTime.ControlMoneyTimeStart());
+
+            publisherMoneyTime.Subscribe(new MoneyObserver("Maria"));
+            Thread.Sleep(10000);
+            publisherMoneyTime.Subscribe(new MoneyObserver("José"));
+            Thread.Sleep(5000);
+            publisherMoneyTime.Unsubscribe(moneyObserver);
+
+            #endregion Observer
         }
 
         private static void Mememento()
