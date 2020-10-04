@@ -5,6 +5,7 @@ using DesignPatterns.BehavioralPatterns.Iterator;
 using DesignPatterns.BehavioralPatterns.Mediator;
 using DesignPatterns.BehavioralPatterns.Memento;
 using DesignPatterns.BehavioralPatterns.Observer;
+using DesignPatterns.BehavioralPatterns.State;
 using DesignPatterns.CreationalPatterns.AbstractFactory;
 using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FactoryMethod;
@@ -81,8 +82,29 @@ namespace DesignPatterns
             //Mememento();
             //ProximoDesignPattern();
 
-            Observer();
+            //Observer();
+            //ProximoDesignPattern();
+
+            State();
             ProximoDesignPattern();
+        }
+
+        private static void State()
+        {
+            #region State
+
+            IWeapon weapon1 = new WatterWeapon();
+            var warWeapon = new WarWeapon(weapon1);
+            warWeapon.Shoot();
+            warWeapon.Shoot();
+            warWeapon.GetNewWeapon(new FireWeapon());
+            warWeapon.Shoot();
+            warWeapon.Shoot();
+            warWeapon.GetNewWeapon(new Flamethower());
+            warWeapon.Shoot();
+            warWeapon.Shoot();
+
+            #endregion State
         }
 
         private static void Observer()
