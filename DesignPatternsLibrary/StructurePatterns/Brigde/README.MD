@@ -12,3 +12,6 @@ Através de uma classe concreta, encapsula como propriedade uma interface que re
 A interface conterá uma instância de um objeto, passado para a classe concreta no construtor (inversâo de dependência), ou no método que a classe concreta utiliza.
 
 Nos métodos da classe concreta, se utiliza a interface para chamar o métodos de negócio.
+
+## Diagrama
+![](../../Image/BridgeDiagrama.png)

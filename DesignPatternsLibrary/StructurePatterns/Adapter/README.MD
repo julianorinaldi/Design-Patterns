@@ -12,7 +12,8 @@ Como pressissa, está dividido em 4 objetos:
 - Adaptee - Define uma interface existente que precisa ser adaptada. É o objeto que será adaptado.
 - Adaptador - Adapta a interface do Adptee à interface Target.
 
-![Adapter](../../Image/Adapter1.png)
+## Diagrama
+![](../../Image/AdapterDiagrama.png)
 
 O exemplo usado foi no seguinte cenário:
 

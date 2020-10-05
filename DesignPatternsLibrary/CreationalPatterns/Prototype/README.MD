@@ -15,3 +15,7 @@ No caso do .NET, na linguagem C#, é de fácil implementação nativa, pelo mét
 ```
 
 Incluse, existe a interface `ICloneable` que contém um método `object Clone();`
+
+
+## Diagrama
+![](../../Image/PrototypeDiagrama.png)

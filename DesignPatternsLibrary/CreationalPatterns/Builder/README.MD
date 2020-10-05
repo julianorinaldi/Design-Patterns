@@ -9,3 +9,5 @@ Em resumo: Encapsula a construção de objetos dentro de um objeto mais complexo
 Usa o conceito de Build, ou seja construtor de cada parte do objeto complexo.
 Como estratégia ainda é criar um método build que sequencia as chamadas dos métodos para construir objeto complexo.
 
+## Diagrama
+![](../../Image/BuilderDiagrama.png)

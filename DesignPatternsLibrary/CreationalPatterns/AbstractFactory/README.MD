@@ -5,6 +5,9 @@
 Fornece uma interface para criar famílias de objetos relacionados ou dependentes sem especificar suas classes concretas.
 Entenda família de objetos quando se trata de um objeto complexo.
 
+## Diagrama
+![](../../Image/AbstractFactoryDiagrama.png)
+
 ## Explicação do cenário de código
 Neste exemplo, tratamo de um Carro, que é composto de vários outros objetos, ou seja, objeto complexo.
 No entanto um carro tem diferentes modelos, e com diferentes qualidades de peças que se tornam também objetos complexos, ex: Roda, Aparelho de Som, etc.
