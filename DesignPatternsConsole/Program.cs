@@ -6,6 +6,7 @@ using DesignPatterns.BehavioralPatterns.Mediator;
 using DesignPatterns.BehavioralPatterns.Memento;
 using DesignPatterns.BehavioralPatterns.Observer;
 using DesignPatterns.BehavioralPatterns.State;
+using DesignPatterns.BehavioralPatterns.Strategy;
 using DesignPatterns.CreationalPatterns.AbstractFactory;
 using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FactoryMethod;
@@ -85,8 +86,37 @@ namespace DesignPatterns
             //Observer();
             //ProximoDesignPattern();
 
-            State();
+            //State();
+            //ProximoDesignPattern();
+
+            Strategy();
             ProximoDesignPattern();
+        }
+
+        private static void Strategy()
+        {
+            #region Strategy
+
+            decimal a = 10;
+            decimal b = 5;
+
+            CalculatorContext calculatorContext = new CalculatorContext();
+            calculatorContext.SetStrategy(new StrategyAddition());
+            Console.WriteLine("Resultado: " + calculatorContext.Calculate(a, b));
+
+            calculatorContext.SetStrategy(new StrategySubtraction());
+            Console.WriteLine("Resultado: " + calculatorContext.Calculate(a, b));
+
+            calculatorContext.SetStrategy(new StrategyMultiplication());
+            Console.WriteLine("Resultado: " + calculatorContext.Calculate(a, b));
+
+            calculatorContext.SetStrategy(new StrategyDivision());
+            Console.WriteLine("Resultado: " + calculatorContext.Calculate(a, b));
+
+            calculatorContext.SetStrategy(new StrategyExponentiation());
+            Console.WriteLine("Resultado: " + calculatorContext.Calculate(a, b));
+
+            #endregion Strategy
         }
 
         private static void State()
