@@ -1,6 +1,6 @@
 # Design-Patterns
 
-Este repositório foi usado para reciclar meus conhecimentos em Design Patterns.
+Este repositório foi usado para reciclar os conhecimentos em Design Patterns.
 
 Mas também está público para poder ajudar a qualquer pessoa que deseja aprender um pouco mais sobre Design Patterns.
 
@@ -18,11 +18,12 @@ Ele engloba todos os 23 Design Patterns criado pelo GOF - Gang dos 4 caboclos.
 ### Como eu estudei?
 
 Para desenvolver os exemplos, foi estudado com mais de uma referência:
--  Curso Udemy, o que comprei achei ruim pra caramba e nem vou citar o nome dele. Tinha muitos cursos em muitas línguas, mas o que ecolhi em português, achei fraco.
+-  Curso Udemy em PT-BR, achei fraco e nem vou citar o nome dele para não se decepcionarem. Tinha muitos cursos em muitas línguas, mas o que ecolhi em português, fui infeliz, fraco, exemplos ruins.
 -  Youtube, achei vários vídeos interessantes em diversas linguagens, mas nenhum bem estruturado que fosse do início ao fim com todos os patterns. Exemplos também muito repetidos.
 -  Site: https://refactoring.guru/ este achei sensacional, com boa explicação, diagramas, exemplos, etc. Tudo que eu estudava, confirmava se no site estava de encontro. No site, só senti falta do `Interpreter`
+-  Outros sites, acabei lendo bastante coisa por aí, para verificar diferente pontos de vistas, e outros exemplos.
 
-Em praticamente todos os exemplos, criei com base no que entendi, então digo que não foram cópias dos exemplos, exceto um ou outro que não consegui pensar em um exemplo melhor e acabei utilizando o mesmo problema pela didática.
+Em grande parte dos exemplos, criei uma exemplificação do Pattern com base no que entendi, exceto um ou outro que não consegui pensar em um exemplo melhor didático e acabei utilizando o mesmo problema apresentado na fonte.
 
 ### Como você está estruturado os projetos
 
