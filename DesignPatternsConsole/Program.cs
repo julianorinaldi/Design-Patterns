@@ -8,6 +8,7 @@ using DesignPatterns.BehavioralPatterns.Observer;
 using DesignPatterns.BehavioralPatterns.State;
 using DesignPatterns.BehavioralPatterns.Strategy;
 using DesignPatterns.BehavioralPatterns.TemplateMethod;
+using DesignPatterns.BehavioralPatterns.Visitor;
 using DesignPatterns.CreationalPatterns.AbstractFactory;
 using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FactoryMethod;
@@ -32,6 +33,10 @@ namespace DesignPatterns
         private static void Main(string[] args)
         {
             new GerenciadorSaida(new SaidaParaConsole(), new DesenharConsole());
+
+            Console.WriteLine("Cada método representa a chamada de um cliente para o Design Pattern.");
+
+            Console.WriteLine("Escolha o seu Design Pattern para ver a saída e descomente a chamada.");
 
             //Singleton();
             //ProximoDesignPattern();
@@ -93,8 +98,25 @@ namespace DesignPatterns
             //Strategy();
             //ProximoDesignPattern();
 
-            TemplateMethod();
-            ProximoDesignPattern();
+            //TemplateMethod();
+            //ProximoDesignPattern();
+
+            //Visitor();
+            //ProximoDesignPattern();
+        }
+
+        private static void Visitor()
+        {
+            #region Visitor
+
+            IComputerPart keyboard = new Keyboard();
+            keyboard.Accept(new ComputerPartDisplayVisitor());
+
+            // Computador encapsula todos os elementos.
+            IComputerPart computer = new Computer();
+            computer.Accept(new ComputerPartDisplayVisitor());
+
+            #endregion Visitor
         }
 
         private static void TemplateMethod()
