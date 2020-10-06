@@ -7,6 +7,7 @@ using DesignPatterns.BehavioralPatterns.Memento;
 using DesignPatterns.BehavioralPatterns.Observer;
 using DesignPatterns.BehavioralPatterns.State;
 using DesignPatterns.BehavioralPatterns.Strategy;
+using DesignPatterns.BehavioralPatterns.TemplateMethod;
 using DesignPatterns.CreationalPatterns.AbstractFactory;
 using DesignPatterns.CreationalPatterns.Builder;
 using DesignPatterns.CreationalPatterns.FactoryMethod;
@@ -89,8 +90,23 @@ namespace DesignPatterns
             //State();
             //ProximoDesignPattern();
 
-            Strategy();
+            //Strategy();
+            //ProximoDesignPattern();
+
+            TemplateMethod();
             ProximoDesignPattern();
+        }
+
+        private static void TemplateMethod()
+        {
+            #region TemplateMethod
+
+            var wood = new WarriorWood();
+            var iron = new WarriorIron();
+            wood.Fight();
+            iron.Fight();
+
+            #endregion TemplateMethod
         }
 
         private static void Strategy()
